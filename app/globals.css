@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --green-deep: #0a4d1f;
+  --green-mid: #1a7a3a;
+  --green-bright: #25a84e;
+  --green-light: #4ecb71;
+  --green-pale: #b8f0c8;
+  --gold: #f5a623;
+  --gold-dark: #c47f00;
+
+  --background: #0d1a10;
+  --foreground: #ffffff;
+  --card: #1a2d1e;
+  --card-foreground: #ffffff;
+  --popover: #1a2d1e;
+  --popover-foreground: #ffffff;
+  --primary: #25a84e;
+  --primary-foreground: #ffffff;
+  --secondary: #1a2d1e;
+  --secondary-foreground: #ffffff;
+  --muted: #1a2d1e;
+  --muted-foreground: #8a9e8d;
+  --accent: #f5a623;
+  --accent-foreground: #0a4d1f;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(78, 203, 113, 0.12);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #4ecb71;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-heading: 'Syne', sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-green-deep: var(--green-deep);
+  --color-green-mid: var(--green-mid);
+  --color-green-bright: var(--green-bright);
+  --color-green-light: var(--green-light);
+  --color-green-pale: var(--green-pale);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #25a84e 0%, #4ecb71 50%, #f5a623 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-green {
+  background: linear-gradient(135deg, #25a84e, #4ecb71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* WhatsApp ping */
+@keyframes ping-anim {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* Pulse animation for badge dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* Grid lines pattern */
+.hero-grid-lines {
+  background-image:
+    linear-gradient(rgba(78,203,113,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78,203,113,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+/* Cross pattern for diferenciais */
+.cross-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234ecb71' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
